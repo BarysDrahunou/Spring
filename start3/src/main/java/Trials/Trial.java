@@ -10,6 +10,10 @@ public class Trial {
         this.TRAINEE = trainee;
     }
 
+    public Trial(String account, int mark1, int mark2) {
+        this(new Trainee(account, mark1, mark2));
+    }
+
     public Trainee getTrainee() {
         return TRAINEE;
     }
@@ -24,6 +28,6 @@ public class Trial {
     }
 
     public boolean isPassed() {
-        return Integer.sum(TRAINEE.getMark1(), TRAINEE.getMark2()) >= CLASS_CONSTANT;
+        return Integer.sum(TRAINEE.getMark1(), TRAINEE.getMark2()) >= getClassConstant();
     }
 }

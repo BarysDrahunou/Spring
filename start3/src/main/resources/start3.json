@@ -1,6 +1,6 @@
 [
   {
-    "clazz": "Trial",
+    "class": "Trial",
     "args": {
       "account": "Vitali",
       "mark1": 11,
@@ -17,12 +17,12 @@
     }
   },
   {
-    "class": "ExtraTrial",
+    "class": "LightTrial",
     "args": {
       "account": "Egor",
       "mark1": 100,
       "mark2": 100,
-      "mark3": 100
+      "mark3": 20
     }
   }
 ]

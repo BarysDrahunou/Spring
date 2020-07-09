@@ -9,6 +9,9 @@ public class LightTrial extends Trial {
     public LightTrial(Trainee trainee) {
         super(trainee);
     }
+    public LightTrial(String account, int mark1, int mark2) {
+        this(new Trainee(account, mark1, mark2));
+    }
 
     @Override
     public boolean isPassed() {
