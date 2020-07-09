@@ -3,7 +3,7 @@
     "class": "Trial",
     "args": {
       "account": "Vitali",
-      "mark1": 11,
+      "mark1": 10,
       "mark2": 22
     }
   },
@@ -11,17 +11,26 @@
     "class": "ExtraTrial",
     "args": {
       "account": "Dimon",
-      "mark1": 0,
-      "mark2": 1,
+      "mark1": 10,
+      "mark2": 11,
       "mark3": 44
     }
   },
   {
-    "class": "LightTrial",
+    "class": "StrongTrial",
     "args": {
       "account": "Egor",
-      "mark1": 100,
-      "mark2": 100,
+      "mark1": 10,
+      "mark2": 11,
+      "mark3": 20
+    }
+  },
+  {
+    "class": "SomeOtherClass",
+    "args": {
+      "account": "Boris",
+      "mark1": 10,
+      "mark2": 11,
       "mark3": 20
     }
   }

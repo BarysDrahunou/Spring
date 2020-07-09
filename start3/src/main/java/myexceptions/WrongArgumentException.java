@@ -1,4 +1,4 @@
-package Myexceptions;
+package myexceptions;
 
 public class WrongArgumentException extends IllegalArgumentException {
     private final IllegalArgumentException exception;
