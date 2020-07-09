@@ -1,0 +1,28 @@
+[
+  {
+    "clazz": "Trial",
+    "args": {
+      "account": "Vitali",
+      "mark1": 11,
+      "mark2": 22
+    }
+  },
+  {
+    "class": "ExtraTrial",
+    "args": {
+      "account": "Dimon",
+      "mark1": 0,
+      "mark2": 1,
+      "mark3": 44
+    }
+  },
+  {
+    "class": "ExtraTrial",
+    "args": {
+      "account": "Egor",
+      "mark1": 100,
+      "mark2": 100,
+      "mark3": 100
+    }
+  }
+]
