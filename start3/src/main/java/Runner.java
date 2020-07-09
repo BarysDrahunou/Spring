@@ -47,7 +47,7 @@ public class Runner {
 
     private static void printSum() {
         int result = trials.stream().map(Runner::lambda).reduce(0, Integer::sum);
-        System.out.println(String.format("Sum of first marks from the collection: %s", result));
+        System.out.println(String.format("Sum of first and second marks from the collection: %s", result));
     }
 
     private static void printFailedTrials() {

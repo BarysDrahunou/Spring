@@ -6,6 +6,7 @@ import com.google.gson.*;
 import org.apache.logging.log4j.*;
 
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.Optional;
 
 
@@ -27,22 +28,17 @@ public class FactoryOfTrials {
             } else {
                 return Optional.empty();
             }
-        } catch (ClassNotFoundException | NumberFormatException | WrongArgumentException  e) {
+        } catch (ClassNotFoundException | NumberFormatException | WrongArgumentException e) {
             LOGGER.error(e);
             return Optional.empty();
         }
     }
 
     private static void checkExtraData(JsonObject jsonObject, String className) {
-        jsonObject.remove("account");
-        jsonObject.remove("mark1");
-        jsonObject.remove("mark2");
+        String[] propertiesToRemove = new String[]{"account", "mark1", "mark2", "class"};
+        Arrays.stream(propertiesToRemove).forEach(jsonObject::remove);
         if (className.equals("ExtraTrial")) {
             jsonObject.remove("mark3");
-        }
-        jsonObject.remove("class");
-        if (jsonObject.toString().length() == 2) {
-            jsonObject.remove("args");
         }
         if (jsonObject.toString().length() > 2) {
             LOGGER.warn(String.format("Redundant data - %s", jsonObject));
