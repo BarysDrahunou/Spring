@@ -8,6 +8,10 @@ public class LightTrial extends Trial {
         super(account, mark1, mark2);
     }
 
+    public LightTrial(LightTrial trial) {
+        this(trial.getAccount(), trial.getMark1(), trial.getMark2());
+    }
+
     public static int getClassConstantForTest1() {
         return CLASS_CONSTANT_FOR_TEST1;
     }
@@ -15,10 +19,12 @@ public class LightTrial extends Trial {
     public static int getClassConstantForTest2() {
         return CLASS_CONSTANT_FOR_TEST2;
     }
+
     @Override
     public Trial copy() {
         return new LightTrial(super.getAccount(), super.getMark1(), super.getMark2());
     }
+
     @Override
     public boolean isPassed() {
         return getMark1() >= getClassConstantForTest1() && getMark2() >= getClassConstantForTest2();

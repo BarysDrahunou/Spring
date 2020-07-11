@@ -4,11 +4,18 @@ import myexceptions.WrongArgumentException;
 
 public class ExtraTrial extends Trial {
     private int mark3;
-    static final int CLASS_CONSTANT_FOR_EXTRA_TRIAL = 50;
+    static final int CLASS_CONSTANT_FOR_EXTRA_TRIAL = 40;
 
     public ExtraTrial(String account, int mark1, int mark2, int mark3) {
         super(account, mark1, mark2);
+        if (mark3 < 0 || mark3 > 100) {
+            throw new WrongArgumentException("Incorrect mark3: ", mark3);
+        }
         this.mark3 = mark3;
+    }
+
+    public ExtraTrial(ExtraTrial trial) {
+        this(trial.getAccount(), trial.getMark1(), trial.getMark2(), trial.getMark3());
     }
 
     public int getMark3() {
@@ -23,15 +30,6 @@ public class ExtraTrial extends Trial {
     public String toString() {
         return String.format("%s; %s; trial is passed - %s"
                 , super.fieldsToString(), getMark3(), isPassed());
-    }
-
-    @Override
-    public boolean isTrialValid() {
-        if (super.isTrialValid() && (getMark3() < 0 || getMark3() > 100)) {
-            throw new WrongArgumentException(
-                    "Mark 3 must be between 0 and 100", getMark3());
-        }
-        return true;
     }
 
     @Override

@@ -1,12 +1,14 @@
 package trials;
 
 public class StrongTrial extends Trial {
-    private static final int CLASS_CONSTANT = 50;
+    private static final int CLASS_CONSTANT = 30;
 
     public StrongTrial(String account, int mark1, int mark2) {
         super(account, mark1, mark2);
     }
-
+    public StrongTrial(StrongTrial trial) {
+        this(trial.getAccount(), trial.getMark1(), trial.getMark2());
+    }
     public static int getClassConstant() {
         return CLASS_CONSTANT;
     }

@@ -2,19 +2,34 @@ package trials;
 
 import myexceptions.WrongArgumentException;
 
+import java.util.Objects;
+
 public class Trial {
 
     private final String account;
     private int mark1;
     private int mark2;
+    private static final int CLASS_CONSTANT = 50;
 
     public Trial(String account, int mark1, int mark2) {
+        if (mark1 < 0 || mark1 > 100) {
+            throw new WrongArgumentException("Incorrect mark1: ", mark1);
+        }
+        if (mark2 < 0 || mark2 > 100) {
+            throw new WrongArgumentException("Incorrect mark2: ", mark2);
+        }
+        if (account.isEmpty()) {
+            throw new WrongArgumentException("Name can't be 0:", account.length());
+        }
+        Objects.requireNonNull(account);
         this.account = account;
         this.mark1 = mark1;
         this.mark2 = mark2;
     }
 
-    private static final int CLASS_CONSTANT = 50;
+    public Trial(Trial trial) {
+        this(trial.getAccount(), trial.getMark1(), trial.getMark2());
+    }
 
     public static int getClassConstant() {
         return CLASS_CONSTANT;
@@ -41,17 +56,6 @@ public class Trial {
     protected String fieldsToString() {
         return String.format("%s; His marks : %s; %s"
                 , getAccount(), getMark1(), getMark2());
-    }
-
-    public boolean isTrialValid() {
-        int[] fields = new int[]{getMark1(), getMark2()};
-        for (int field : fields) {
-            if (field < 0 || field > 100) {
-                throw new WrongArgumentException(
-                        "Field value must be between 0 and 100", getMark1());
-            }
-        }
-        return true;
     }
 
     public void clearMarks() {

@@ -1,4 +1,6 @@
 import factory.FactoryOfTrials;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import trials.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -10,6 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Runner {
+    private static final Logger LOGGER = LogManager.getLogger();
     private static List<Trial> trials;
 
     public static void main(String[] args) {
@@ -32,6 +35,7 @@ public class Runner {
 
             printNumericArray(trials);     //7
         } catch (IOException e) {
+            LOGGER.error(e);
             e.printStackTrace();
         }
     }
@@ -46,19 +50,21 @@ public class Runner {
     }
 
     private static void printSum() {
-        int result = trials.stream().map(Runner::lambda).reduce(0, Integer::sum);
-        System.out.println(String.format("Sum of first and second marks from the collection: %s", result));
+        System.out.println("Sum of first and second marks from the collection:");
+        trials.forEach(f -> System.out.println(lambda(f)));
+        System.out.println("_________________________");
     }
 
     private static void printFailedTrials() {
-        List<Trial> list = trials.stream().filter(x -> !x.isPassed()).map(Trial::copy).peek(Trial::clearMarks).collect(Collectors.toList());
-        list.forEach(System.out::println);
-        System.out.println(list.stream().anyMatch(Trial::isPassed));
+        List<Trial> list = trials.stream().filter(x -> !x.isPassed()).map(Trial::copy)
+                .peek(Trial::clearMarks).peek(System.out::println).collect(Collectors.toList());
+        System.out.println(list.stream().noneMatch(Trial::isPassed));
     }
 
     private static void printNumericArray(List<Trial> trial) {
         int[] array = trial.stream().mapToInt(Runner::lambda).toArray();
-        String stringList = Arrays.stream(array).boxed().map(String::valueOf).collect(Collectors.joining(", "));
+        String stringList = Arrays.stream(array).boxed()
+                .map(String::valueOf).collect(Collectors.joining(", "));
         System.out.println(stringList);
     }
 }
