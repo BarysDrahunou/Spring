@@ -34,5 +34,23 @@
       "mark2": 11,
       "mark3": 20
     }
+  },
+    {
+    "class": "SomeOtherClass",
+    "args": {
+      "account": "Boris",
+      "mark1": 10,
+      "mark2": 11,
+      "mark3": 20
+    }
+  },
+    {
+    "class": "SomeOtherClass",
+    "args": {
+      "account": "Boris",
+      "mark1": 10,
+      "mark2": 11,
+      "mark3": 20
+    }
   }
 ]
