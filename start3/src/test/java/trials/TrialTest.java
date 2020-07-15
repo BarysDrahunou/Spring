@@ -1,5 +1,6 @@
 package trials;
 
+import myexceptions.WrongArgumentException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +15,33 @@ public class TrialTest {
         trial1 = new Trial("Vasya", 12, 13);
         trial2 = new Trial("Dima", 60, 41);
     }
+
+    @Test
+    public void constructorTest() {
+        Trial trial = new Trial(trial2);
+        assertEquals(trial1.toString(), new Trial("Vasya", 12, 13).toString());
+        assertEquals(trial2.toString(), new Trial(trial).toString());
+    }
+
+    @Test(expected = WrongArgumentException.class)
+    public void constructorTestException() {
+        try {
+            Trial trial = new Trial("Vasya", -12, 13);
+        } catch (WrongArgumentException e) {
+            try {
+                Trial trial = new Trial("Vasya", 12, 130);
+            } catch (WrongArgumentException e1) {
+                Trial trial = new Trial("", 12, 13);
+            }
+        }
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void constructorTestNPException() {
+
+        Trial trial = new Trial(null, 12, 13);
+    }
+
 
     @Test
     public void getClassConstant() {

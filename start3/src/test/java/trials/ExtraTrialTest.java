@@ -17,6 +17,37 @@ public class ExtraTrialTest {
     }
 
     @Test
+    public void constructorTest() {
+        ExtraTrial trial = new ExtraTrial(trial2);
+        assertEquals(trial1.toString(), new ExtraTrial("Vasya", 12, 13, 10).toString());
+        assertEquals(trial2.toString(), new ExtraTrial(trial).toString());
+    }
+
+    @Test(expected = WrongArgumentException.class)
+    public void constructorTestException() {
+        try {
+            ExtraTrial trial = new ExtraTrial("Vasya", -12, 13, 50);
+        } catch (WrongArgumentException e) {
+            try {
+                ExtraTrial trial = new ExtraTrial("Vasya", 0, 130, 100);
+            } catch (WrongArgumentException e1) {
+                try {
+                    ExtraTrial trial = new ExtraTrial("Vasya", 0, 0, 101);
+                } catch (WrongArgumentException e2) {
+                    ExtraTrial trial = new ExtraTrial("", 10, 20, 30);
+                }
+            }
+        }
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void constructorTestNPException() {
+
+        ExtraTrial trial = new ExtraTrial(null, 12, 13, 50);
+    }
+
+
+    @Test
     public void getMark3Test() {
         assertEquals(88, trial2.getMark3());
     }
@@ -29,7 +60,7 @@ public class ExtraTrialTest {
 
     @Test
     public void getClassConstantForExtraTrial() {
-        assertEquals(40, ExtraTrial.getClassConstant());
+        assertEquals(40, ExtraTrial.getClassConstantForExtraTrial());
     }
 
     @Test
