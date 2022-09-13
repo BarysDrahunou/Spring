@@ -2,6 +2,7 @@ name: GitHub Organization User Activity Report
 on: [push]
 jobs:
   Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
     steps:
       - name: GitHub Organization User Activity Report
         uses: peter-murray/inactive-users-action@v1
