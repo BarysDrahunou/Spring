@@ -10,3 +10,4 @@ jobs:
         with:
           token: ${{ secrets.ORGANIZATION_AND_REPO_ACCESS_TOKEN }}
           organization: BarysDrahunou
+          activity_days: 180
