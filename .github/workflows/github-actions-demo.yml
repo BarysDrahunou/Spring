@@ -6,3 +6,6 @@ jobs:
     steps:
       - name: GitHub Organization User Activity Report
         uses: peter-murray/inactive-users-action@v1
+        with:
+          token: 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
+          organization: BarysDrahunou
