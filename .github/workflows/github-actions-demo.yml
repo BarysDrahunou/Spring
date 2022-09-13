@@ -7,5 +7,5 @@ jobs:
       - name: GitHub Organization User Activity Report
         uses: peter-murray/inactive-users-action@v1
         with:
-          token: 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
+          token: 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
           organization: BarysDrahunou
