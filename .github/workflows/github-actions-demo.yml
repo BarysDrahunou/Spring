@@ -1,9 +1,8 @@
 name: GitHub Organization User Activity Report
 on: [push]
 jobs:
-  build:
-    environment: All
   Explore-GitHub-Actions:
+    environment: All
     runs-on: ubuntu-latest
     steps:
       - name: GitHub Organization User Activity Report
