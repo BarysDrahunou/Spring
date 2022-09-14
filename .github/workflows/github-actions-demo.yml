@@ -5,15 +5,8 @@ jobs:
     environment: All
     runs-on: ubuntu-latest
     steps:
-      - name: GitHub Organization User Activity Report
-        uses: peter-murray/inactive-users-action@v1
-        with:
-          token: ${{ secrets.ZZZZ }}
-          organization: ClarabridgeInc
-          activity_days: 180
       - name: Save User Activity Report
         uses: actions/upload-artifact@v2
         with:
           name: reports
-          path: |
-            ${{ steps.analyze_user_activity.outputs.report_csv }}
+          path: ${{ steps.analyze_user_activity.outputs.report_csv }}
